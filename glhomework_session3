@@ -4,31 +4,29 @@
 // 1st task
 
 function compareObjects(obj1, obj2, prop) {
-	if (obj1 instanceof Object && 
-		obj2 instanceof Object && 
-		obj1.hasOwnProperty(prop) && 
-		obj2.hasOwnProperty(prop) ) {
-
-	obj1[prop] > obj2[prop] ? console.log(obj1.name) :
-		obj1[prop] < obj2[prop] ? console.log(obj2.name) :
-			obj1[prop] === obj2[prop] ? console.log(obj1.name+' equals to '+obj2.name) : console.log('type of \''+prop+'\' is not a Number');
-
+	if (obj1[prop] > obj2[prop]){
+		console.log(obj1.name);
+	} else if (obj1[prop] < obj2[prop]) {
+		console.log(obj2.name);
 	} else {
-		console.log("ads");
+		console.log(obj1.name+' equals to '+obj2.name)
 	};
 };
 
 function MyObject (name, number) {
-	this.name = name,
-	this.number = number 
+	this.name = name;
+	this.number = number; 
 };
 
+function getRandomNumber() {
+	return Math.floor(Math.random()*100);
+};
 
 var o1 = {
-	name : 'Object1',
-	number : getRandomNumber()
-};
-var o2 = new MyObject('Object2', getRandomNumber());
+		name : 'Object1',
+		number : getRandomNumber()
+	},
+	o2 = new MyObject('Object2', getRandomNumber());
 
 compareObjects(o1,o2,'number');
 
@@ -36,9 +34,6 @@ compareObjects(o1,o2,'number');
 //////////////////////////
 // 2nd task
 
-function getRandomNumber() {
-	return Math.floor(Math.random()*100);
-}
 
 var songCollection = [
 	{
@@ -66,9 +61,9 @@ var songCollection = [
 function favoriteSong(collection) {
 	var resultObj = {
 		id : 0,
-		played : 0
+		played : collection[0].played
 	};
-	for (var id=0; id<collection.length; id++){
+	for (var id=1; id<collection.length; id++){
 		if(collection[id].played > resultObj.played) {
 			resultObj.id = id;
 			resultObj.played = collection[id].played;
@@ -170,6 +165,6 @@ var test = {
 };
 
 
-var test1 = deepCopy({},test);   
+var test1 = deepCopy({as : 1},test);   
 console.log(test.w.x.z === test1.w.x.z);  // false 
-console.log(test.x[0] === test1.x[0]) // false P.S. посмотрел, что дефолтный assign test.x === test1.x тоже вернет falseW:)
+console.log(test.x[0] === test1.x[0]) // false 
