@@ -165,6 +165,6 @@ var test = {
 };
 
 
-var test1 = deepCopy({as : 1},test);   
+var test1 = deepCopy({},test);   
 console.log(test.w.x.z === test1.w.x.z);  // false 
-console.log(test.x[0] === test1.x[0]) // false P.S. посмотрел, что дефолтный assign test.x === test1.x тоже вернет falseW:)
+console.log(test.x[0] === test1.x[0]) // false 
