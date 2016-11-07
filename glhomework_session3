@@ -124,13 +124,12 @@ source сколько угодно объектов, а так же выполн
 */
 function deepCopy(target, ...source) {
 	// id - порядковый номер введеного source, resultSourse - резулльтирующий массив, в который глубоко копируются объекты.
-	var id = 0,
-		resultSource = [];
+	var resultSource = [];
 
-	source.forEach( source => {
+	source.forEach( (source, id) => {
 		resultSource[id] = {};
 		for (var key in source){
-			if (source[key] instanceof Object){
+			if (source[key] instanceof Object && !(source[key] instanceof Array)){
 
 				// Если свойством является объект - рекурсивно вызываем нашу функцию и результат пишем в свойство.
 				resultSource[id][key] = deepCopy({},source[key]);
@@ -140,7 +139,6 @@ function deepCopy(target, ...source) {
 				resultSource[id][key] = source[key];
 			};
 		};
-		id++;
 	});
 
 	// Возвращаем объект с глубоко прокопированным resultSource
@@ -155,11 +153,6 @@ var test = {
 			}
 		}
 	},
-	x:[
-		{
-			a:[]
-		}
-	],
 	a:1,
 	b:2
 };
@@ -167,4 +160,3 @@ var test = {
 
 var test1 = deepCopy({},test);   
 console.log(test.w.x.z === test1.w.x.z);  // false 
-console.log(test.x[0] === test1.x[0]) // false 
