@@ -191,4 +191,3 @@ function without (arrA, arrB) {
 		console.log('Введите массив');
 	};
 }
-without([1,2,3],[1,3])
