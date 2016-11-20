@@ -151,7 +151,7 @@ function drawField(array) {
 
 	// Create one Node of cell and in loop clone this Node
 	var cell = document.createElement('div');
-		cell.setAttribute('style', 'float:left; width: 46px; height:46px; border: 2px solid black ');
+		cell.setAttribute('style', 'background-color:#f7ef90 ;font-size: 40px;float:left; width: 46px; height:46px; border: 2px solid black ');
 		cell.setAttribute('cell','check');
 
 	for (var i = 1; i<=16; i++){
