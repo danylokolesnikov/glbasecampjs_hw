@@ -87,14 +87,14 @@ Node.prototype.myAttributes = function (attribute, value){
 // The function takes one parameter - size chess cells
 function chess(size){
 	// Make sure, that is not little desk and size is positive
-	var size = Math.abs(size);
-	size = size<10 ? 10 : size;
+	var size = Math.abs(size<10 || size === undefined? 10 : size);
+
 
 	var fragment = document.createDocumentFragment(),
 		container = document.createElement('div');
 
 	container.setAttribute('style','width:'+8*size+'px; height: '+8*size+'px; border: 5px solid black;');
-	container.className('chess')
+	container.classList.add('chess');
 	for (var i=1, j=1; i<=64; i++){
 		
 		var checkerboard = document.createElement('div');
@@ -142,21 +142,21 @@ function drawField(array) {
 		container = document.createElement('div'),
 		step = document.createElement('p');
 
-	container.setAttribute('style','width: 200px; height: 200px ; border: 5px solid black')
-	container.className = 'battle-field';
+	container.setAttribute('style','font-size: 40px; width: 200px; height: 200px ; border: 5px solid black')
+	container.classList.add('battle-field');
 
 	step.setAttribute('style', 'color : blue; font-size:20px');
-	step.className = 'counter';
+	step.classList.add('counter');
 	step.innerHTML = 'Ходов: 0';
 
 	// Create one Node of cell and in loop clone this Node
 	var cell = document.createElement('div');
-		cell.setAttribute('style', 'background-color:#f7ef90 ;font-size: 40px;float:left; width: 46px; height:46px; border: 2px solid black ');
+		cell.setAttribute('style', 'float:left; width: 46px; height:46px; border: 2px solid black ');
 		cell.setAttribute('cell','check');
 
 	for (var i = 1; i<=16; i++){
 		cell = cell.cloneNode(true);
-		cell.className = i;
+		cell.classList.add('c'+i);
 		cell.innerHTML = array[i-1];
 		container.appendChild(cell);
 	};
@@ -175,12 +175,12 @@ function move(e){
 
 	// Checking is it clicked on cell and isn't  empty cell 
 	if (el.hasAttribute('cell') && el.innerHTML !== ''){
-		var	elNum = parseInt(el.className),
+		var	elNum = parseInt(el.className.substr(1)),
 
-			rightElem = document.getElementsByClassName(elNum+1)[0],
-			leftElem = document.getElementsByClassName(elNum-1)[0],
-			upElem = document.getElementsByClassName(elNum-4)[0],
-			downElem = document.getElementsByClassName(elNum+4)[0],
+			rightElem = document.getElementsByClassName('c'+(elNum+1))[0],
+			leftElem = document.getElementsByClassName('c'+(elNum-1))[0],
+			upElem = document.getElementsByClassName('c'+(elNum-4))[0],
+			downElem = document.getElementsByClassName('c'+(elNum+4))[0],
 
 			// Considering border, get value of cells around cell what was clicked 
 			right = elNum%4 !== 0? rightElem.innerHTML : null,
@@ -212,7 +212,7 @@ function move(e){
 
 function checkResult() {
 	for(var i = 1; i<=15; i++){
-		if (document.getElementsByClassName(i)[0].innerHTML != i){
+		if (document.getElementsByClassName('c'+i)[0].innerHTML != i){
 			return
 		};
 	};
