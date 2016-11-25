@@ -1,0 +1,85 @@
+@font-face {
+	font-family: StarWarsFont; 
+	src: url(../fonts/Starjedi.ttf); 
+}
+
+html, body, .main {
+  	height: 100%;
+}
+
+/*Styles for main container*/
+.main {
+	overflow: scroll;
+	font-family: StarWarsFont, sans-serif;
+	color: #ffe821;
+	display: flex;
+	flex-direction: column;
+	background: url('../img/bg.jpg');
+
+}
+
+/*HEADER STYLES BEGIN*/
+.header {
+	height: 200px;
+	display: flex;
+}
+
+	.header h1{
+		font-size: 1.5em;
+		margin: auto;
+	}
+/*HEADER STYLES END*/
+
+/*CONTENT STYLES BEGIN*/
+.content {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	
+}
+	.left, .hero, .films{
+		width: 400px
+	}
+
+	.left {
+		display: flex;
+		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
+		        flex-direction: column;		
+	}
+
+	.left img {
+		margin: auto;
+		width: 200px;
+		height: auto;
+		margin-bottom: 20px;
+		-webkit-border-radius: 100px;
+		        border-radius: 100px;
+	}
+
+	.left .buts {
+		margin: auto;
+	}
+		.left a img{
+			width: 150px;
+			height: 20px;
+		}
+
+	.hero {
+	
+	}
+
+		.hero p {
+			margin: 20px;
+			margin-left: 25% ;
+		}
+	
+	.films {
+		
+	}
+		.films p {
+			margin-top: 40px;
+			margin-left: 10%;
+		}
+/*CONTENT STYLES END*/
