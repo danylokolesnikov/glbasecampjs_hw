@@ -1,4 +1,4 @@
-// !!!!!!!!!!!!!!!!!!!!!!!!! 
+document.addEventListener("DOMContentLoaded", main);
 
 function getPerson(id) {
 	
@@ -217,4 +217,3 @@ function main(){
 };
 
 
-document.addEventListener("DOMContentLoaded", main);
