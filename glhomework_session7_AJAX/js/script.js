@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", main);
 
+
+/**
+*
+*	This function get @parament (number) id and make fetch request to api http://swapi.co/ whith correct id of hero
+*	and when they have response, they make again some fetch requests and give response whith array of films whith this hero
+*/
 function getPerson(id) {
 	
 	loader(true);
