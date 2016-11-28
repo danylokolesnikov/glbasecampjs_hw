@@ -133,6 +133,7 @@ function pyatnashki(){
 
 	// Make handling event to cells;
 	var field = document.querySelector('.battle-field');
+	console.log(field);
 	field.addEventListener('click', move)
 };
 
@@ -149,13 +150,10 @@ function drawField(array) {
 	step.classList.add('counter');
 	step.innerHTML = 'Ходов: 0';
 
-	// Create one Node of cell and in loop clone this Node
-	var cell = document.createElement('div');
+	for (var i = 1; i<=16; i++){
+		var cell = document.createElement('div');
 		cell.setAttribute('style', 'float:left; width: 46px; height:46px; border: 2px solid black ');
 		cell.setAttribute('cell','check');
-
-	for (var i = 1; i<=16; i++){
-		cell = cell.cloneNode(true);
 		cell.classList.add('c'+i);
 		cell.innerHTML = array[i-1];
 		container.appendChild(cell);
@@ -170,9 +168,9 @@ function drawField(array) {
 
 
 function move(e){
-
+	
 	var el = e.target
-
+	
 	// Checking is it clicked on cell and isn't  empty cell 
 	if (el.hasAttribute('cell') && el.innerHTML !== ''){
 		var	elNum = parseInt(el.className.substr(1)),
